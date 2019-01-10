@@ -11,6 +11,9 @@ And just run (sudo password will be asked because winehq and mono-complete will 
 ./start.sh
 ```
 
+# Compatibility
+ - Ubuntu 18.04
+
  # Screenshot
  ![example](example.png)
  
