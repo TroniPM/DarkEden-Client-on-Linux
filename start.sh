@@ -1,7 +1,20 @@
 #!/bin/bash
 # tronipm paulomatew@gmail.com
 
-sudo dpkg --add-architecture i386 && sudo apt install wine64 wine32
+###############################################################
+##################### RUN THIS ONLY ONCE ######################
+sudo dpkg --add-architecture i386
+wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
+sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ bionic main'
+sudo apt-get install --install-recommends winehq-stable mono-complete
+###############################################################
+###############################################################
+
+
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+DK_FILE=`echo "$DIR/darkeden.exe" | sed 's/ /\\ /g'`
 
 echo ''
 echo ''
@@ -11,19 +24,21 @@ echo "2) Windows mode"
 
 echo ''
 read -p "So...? " REPLY;
-echo "'${REPLY}'";
-if [ $REPLY != "2" ] && [ $REPLY != "1" ] && [ ! -z $REPLY ]; then
+
+if [ $REPLY != "2" ] && [ $REPLY != "1" ] && [ ! -z "$REPLY" ]; then
 	echo ''
 	echo 'Unknow command. Try again...'
 fi
 
-if [ $REPLY == "1" ] || [ -z $REPLY ]; then
+if [ $REPLY == "1" ] || [ -z "$REPLY" ]; then
 	echo ''
 	echo 'Starting Darkeden in FULLSCREEN mode.'
 
 	echo ''
 	echo ''
-	wine darkeden.exe 0000000002;
+	 #export WINEPREFIX='/media/fun/darkeden'
+	 #wine --prefix '/media/fun/darkeden'
+	 wine explorer /desktop=1024x768 "$DK_FILE" 0000000002 -opengl
 fi
 
 if [ $REPLY == "2" ]; then
@@ -32,5 +47,7 @@ if [ $REPLY == "2" ]; then
 
 	echo ''
 	echo ''
-	wine darkeden.exe 0000000001;
+	 #export WINEPREFIX='/media/fun/darkeden'
+	 #wine --prefix '/media/fun/darkeden'
+	 wine explorer /desktop=1024x768 "$DK_FILE" 0000000001 -opengl
 fi
