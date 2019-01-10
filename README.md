@@ -12,4 +12,3 @@ And just run (sudo password will be asked):
 ```
 
  - TO-DO: Text is a mess. Fix this (maybe with https://forum.winehq.org/viewtopic.php?t=919).
- - TO-DO: When windows mode was selected, change monitor color scheme to 8bits or 16bits.
