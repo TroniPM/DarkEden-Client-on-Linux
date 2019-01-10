@@ -1,4 +1,4 @@
-# DarkEden-Clint-on-Linux
+# DarkEden-Client-on-Linux
 Run your darkeden client on linux.
 
 Copy ```start.sh``` to your client folder, give permission:
