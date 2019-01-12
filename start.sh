@@ -1,16 +1,16 @@
 #!/bin/bash
 # tronipm paulomatew@gmail.com
 
-###############################################################
-##################### RUN THIS ONLY ONCE ######################
-sudo dpkg --add-architecture i386
-wget -qO- https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
-sudo apt-add-repository 'deb http://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-sudo apt-get install --install-recommends winehq-stable mono-complete
-###############################################################
-###############################################################
-
-
+if [ ! -f .wine ]; then
+	echo '###############################################################'
+	echo '################### RUNNING THIS ONLY ONCE ####################'
+	echo '###############################################################'
+	sudo dpkg --add-architecture i386
+	sudo apt-get update && sudo apt-get install --install-recommends -y wine32 wine64
+	touch .wine
+	echo '###############################################################'
+	echo '###############################################################'
+fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
